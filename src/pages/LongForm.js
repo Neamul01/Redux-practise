@@ -11,19 +11,19 @@ const LongForm = () => {
   };
 
   return (
-    <div className='h-screen w-screen flex justify-center items-center overflow-auto'>
+    <div className="h-screen w-screen flex justify-center items-center overflow-auto">
       <form
-        className='shadow-lg p-10 rounded-md flex flex-wrap gap-3 max-w-3xl justify-between'
+        className="shadow-lg p-10 rounded-md flex flex-wrap gap-3 max-w-3xl justify-between"
         onSubmit={submit}
       >
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='firstName'>
+        <div className="flex flex-col w-full max-w-xs">
+          <label className="mb-2" htmlFor="firstName">
             First Name
           </label>
           <input
-            type='text'
-            name='firstName'
-            id='firstName'
+            type="text"
+            name="firstName"
+            id="firstName"
             onBlur={(e) =>
               dispatch({
                 type: "INPUT",
@@ -32,14 +32,14 @@ const LongForm = () => {
             }
           />
         </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='lastName'>
+        <div className="flex flex-col w-full max-w-xs">
+          <label className="mb-2" htmlFor="lastName">
             Last Name
           </label>
           <input
-            type='text'
-            name='lastName'
-            id='lastName'
+            type="text"
+            name="lastName"
+            id="lastName"
             onBlur={(e) =>
               dispatch({
                 type: "INPUT",
@@ -48,14 +48,14 @@ const LongForm = () => {
             }
           />
         </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='email'>
+        <div className="flex flex-col w-full max-w-xs">
+          <label className="mb-2" htmlFor="email">
             Email
           </label>
           <input
-            type='email'
-            name='email'
-            id='email'
+            type="email"
+            name="email"
+            id="email"
             onBlur={(e) =>
               dispatch({
                 type: "INPUT",
@@ -64,15 +64,15 @@ const LongForm = () => {
             }
           />
         </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <h1 className='mb-3'>Gender</h1>
-          <div className='flex gap-3'>
+        <div className="flex flex-col w-full max-w-xs">
+          <h1 className="mb-3">Gender</h1>
+          <div className="flex gap-3">
             <div>
               <input
-                type='radio'
-                id='male'
-                name='gender'
-                value='male'
+                type="radio"
+                id="male"
+                name="gender"
+                value="male"
                 onClick={(e) =>
                   dispatch({
                     type: "INPUT",
@@ -80,16 +80,16 @@ const LongForm = () => {
                   })
                 }
               />
-              <label className='ml-2 text-lg' for='male'>
+              <label className="ml-2 text-lg" for="male">
                 Male
               </label>
             </div>
             <div>
               <input
-                type='radio'
-                id='female'
-                name='gender'
-                value='female'
+                type="radio"
+                id="female"
+                name="gender"
+                value="female"
                 onClick={(e) =>
                   dispatch({
                     type: "INPUT",
@@ -97,16 +97,16 @@ const LongForm = () => {
                   })
                 }
               />
-              <label className='ml-2 text-lg' for='female'>
+              <label className="ml-2 text-lg" for="female">
                 Female
               </label>
             </div>
             <div>
               <input
-                type='radio'
-                id='other'
-                name='gender'
-                value='other'
+                type="radio"
+                id="other"
+                name="gender"
+                value="other"
                 onClick={(e) =>
                   dispatch({
                     type: "INPUT",
@@ -114,19 +114,19 @@ const LongForm = () => {
                   })
                 }
               />
-              <label className='ml-2 text-lg' for='other'>
+              <label className="ml-2 text-lg" for="other">
                 Other
               </label>
             </div>
           </div>
         </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-3' for='education'>
+        <div className="flex flex-col w-full max-w-xs">
+          <label className="mb-3" for="education">
             Education
           </label>
           <select
-            name='education'
-            id='education'
+            name="education"
+            id="education"
             onChange={(e) =>
               dispatch({
                 type: "INPUT",
@@ -134,35 +134,57 @@ const LongForm = () => {
               })
             }
           >
-            <option value='SSC'>SSC</option>
-            <option value='HSC'>HSC</option>
-            <option value='underGrad'>Under Graduate</option>
-            <option value='graduate'>Graduate</option>
+            <option value="SSC">SSC</option>
+            <option value="HSC">HSC</option>
+            <option value="underGrad">Under Graduate</option>
+            <option value="graduate">Graduate</option>
           </select>
         </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-3'>Number of PCs</label>
-          <div className='flex justify-between items-center gap-2 '>
-            <button className='bg-indigo-500 text-lg text-white rounded h-10 w-10 '>
+        <div className="flex flex-col w-full max-w-xs">
+          <label className="mb-3">Number of PCs</label>
+          <div className="flex justify-between items-center gap-2 ">
+            <button
+              className="bg-indigo-500 text-lg text-white rounded h-10 w-10 "
+              onClick={(e) =>
+                dispatch({
+                  type: "COUNT",
+                  payload: {
+                    value: initialState.quantity,
+                    type: "DECREASE",
+                  },
+                })
+              }
+            >
               -
             </button>
-            <div className='border flex-1 flex justify-center items-center h-10 rounded-md border-gray-300'>
-              <span className='text-lg'>0</span>
+            <div className="border flex-1 flex justify-center items-center h-10 rounded-md border-gray-300">
+              <span className="text-lg">{state.quantity}</span>
             </div>
-            <button className='bg-indigo-500 text-lg text-white rounded h-10 w-10'>
+            <button
+              className="bg-indigo-500 text-lg text-white rounded h-10 w-10"
+              onClick={(e) =>
+                dispatch({
+                  type: "COUNT",
+                  payload: {
+                    value: initialState.quantity,
+                    type: "INCREASE",
+                  },
+                })
+              }
+            >
               +
             </button>
           </div>
         </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-3' for='feedback'>
+        <div className="flex flex-col w-full max-w-xs">
+          <label className="mb-3" for="feedback">
             Feedback
           </label>
           <textarea
-            name='feedback'
-            id='feedback'
-            cols='30'
-            rows='4'
+            name="feedback"
+            id="feedback"
+            cols="30"
+            rows="4"
             onBlur={(e) =>
               dispatch({
                 type: "INPUT",
@@ -172,20 +194,20 @@ const LongForm = () => {
           ></textarea>
         </div>
 
-        <div className='flex justify-between items-center w-full'>
-          <div className='flex  w-full max-w-xs'>
+        <div className="flex justify-between items-center w-full">
+          <div className="flex  w-full max-w-xs">
             <input
-              className='mr-3'
-              type='checkbox'
-              name='term'
-              id='terms'
+              className="mr-3"
+              type="checkbox"
+              name="term"
+              id="terms"
               onClick={() => dispatch({ type: "TOGGLE" })}
             />
-            <label for='terms'>I agree to terms and conditions</label>
+            <label for="terms">I agree to terms and conditions</label>
           </div>
           <button
-            className=' px-4 py-3 bg-indigo-500 rounded-md font-semibold text-white text-lg disabled:bg-gray-500'
-            type='submit'
+            className=" px-4 py-3 bg-indigo-500 rounded-md font-semibold text-white text-lg disabled:bg-gray-500"
+            type="submit"
             disabled={!state.term}
           >
             Submit

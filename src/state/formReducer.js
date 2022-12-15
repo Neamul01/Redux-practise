@@ -23,6 +23,21 @@ export const reducer = (state, action) => {
         ...state,
         term: !state.term,
       };
+    case actionTypes.COUNT:
+      switch (action.payload.type) {
+        case "INCREASE":
+          return {
+            ...state,
+            quantity: state.quantity + 1,
+          };
+        case "DECREASE":
+          return {
+            ...state,
+            quantity: state.quantity - 1,
+          };
+        default:
+          return state;
+      }
     default:
       return state;
   }
